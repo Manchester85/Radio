@@ -1,8 +1,7 @@
 package ru.netology.radioman;
 
 public class Radio {
-    public int currentStation;
-    public int currentVolume;
+
     private int newStation;
     private int newVolume;
     private int minStation = 0;
@@ -11,30 +10,31 @@ public class Radio {
     private int maxVolume = 10;
 
     public void setCurrentStation(int newStation) {
-        if ((currentStation <= maxStation) && (currentStation >= minStation)) {
-
-            currentStation = newStation;
+        if (newStation > maxStation) {
+            return;
         }
-        return;
+        if (newStation < minStation) {
+            return;
+        }
+        this.newStation = newStation;
     }
 
-    public int getCurrentStation() {
-        return currentStation;
-    }
 
-    public int nextStation(int newStation) {
-            this.newStation = newStation;
+    public int getCurrentStation(){
+    return newStation;
+}
+
+    public void nextStation() {
             if(newStation == maxStation){
               newStation = minStation;
             }
             else{ newStation = newStation + 1;}
-            return newStation;
+            return;
         }
 
 
-    public void prevStation(int newStation) {
-        this.newStation = newStation;
-        if(newStation == minStation) {
+    public void prevStation() {
+       if(newStation == minStation) {
             newStation = maxStation;
         }
         else { newStation = newStation - 1;}
@@ -43,27 +43,28 @@ public class Radio {
 
 
     public void setCurrentVolume(int newVolume) {
-        if ((currentVolume <= maxVolume) && (currentVolume >= minVolume)) {
-
-            currentVolume = newVolume;
+        if (newVolume > maxVolume) {
+            return;
         }
-        return;
+        if (newVolume < minVolume) {
+            return;
+        }
+        this.newVolume = newVolume;
     }
+
 
     public int getCurrentVolume() {
-        return currentVolume;
+        return newVolume;
     }
 
-    public void addVolume(int newVolume) {
-        this.newVolume = newVolume;
+    public void addVolume() {
         if (newVolume != maxVolume) {
             newVolume = newVolume + 1;
                }
         return;
     }
 
-    public void minusVolume(int newVolume) {
-        this.newVolume = newVolume;
+    public void minusVolume() {
         if (newVolume != minVolume) {
             newVolume = newVolume - 1;
                 }
