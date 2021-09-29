@@ -2,12 +2,31 @@ package ru.netology.radioman;
 
 public class Radio {
 
+    private int quantityStation = 10;
     private int newStation;
     private int newVolume;
     private int minStation = 0;
-    private int maxStation = 9;
+    private int maxStation = 10;
     private int minVolume = 0;
-    private int maxVolume = 10;
+    private int maxVolume = 100;
+
+    public Radio( int newStation, int newVolume, int minStation, int maxStation, int minVolume, int maxVolume) {
+        this.newStation = newStation;
+        this.newVolume = newVolume;
+        this.minStation = minStation;
+        this.maxStation = maxStation;
+        this.minVolume = minVolume;
+        this.maxVolume = maxVolume;
+    }
+
+    public Radio(int quantityStation) {
+        this.quantityStation = quantityStation;
+    }
+
+
+    public Radio() {
+
+    }
 
     public void setCurrentStation(int newStation) {
         if (newStation < maxStation) {
@@ -100,7 +119,9 @@ public class Radio {
         }
             return;
         }
-    }
+
+
+}
 
 
 
