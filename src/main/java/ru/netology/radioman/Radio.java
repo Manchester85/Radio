@@ -1,19 +1,33 @@
 package ru.netology.radioman;
 
+
 public class Radio {
 
+
+    private int quantityStation = 20;
     private int newStation;
     private int newVolume;
     private int minStation = 0;
     private int maxStation = 9;
     private int minVolume = 0;
-    private int maxVolume = 10;
+    private int maxVolume = 100;
+
+    //без параметров
+    public Radio() {
+    }
+
+    public Radio(int quantityStation) {
+        this.quantityStation = quantityStation;
+        this.maxStation = quantityStation -1;
+    }
 
     public void setCurrentStation(int newStation) {
-        if (newStation < maxStation) {
+        if (newStation > maxStation) {
+            newStation = maxStation;
 
         }
-        if (newStation > minStation) {
+        if (newStation < minStation) {
+            newStation = minStation;
 
         }
 
@@ -24,23 +38,26 @@ public class Radio {
         return newStation;
     }
 
+
     public void nextStation() {
-        if (newStation == maxStation) {
-            newStation = minStation;
-        } else {
+        if (newStation < maxStation) {
             newStation = newStation + 1;
         }
-        return;
+        if (newStation == maxStation) {
+            newStation = minStation;
+        }
+        this.newStation = newStation;
     }
 
-
     public void prevStation() {
+        if (newStation > minStation){
+            newStation = newStation -1;
+        }
         if (newStation == minStation) {
             newStation = maxStation;
-        } else {
-            newStation = newStation - 1;
         }
-        return;
+
+        this.newStation = newStation;
     }
 
     public void increaseStation() {
@@ -58,10 +75,12 @@ public class Radio {
     }
 
     public void setCurrentVolume(int newVolume) {
-        if (newVolume < maxVolume) {
+        if (newVolume > maxVolume) {
+            newVolume = maxVolume;
 
         }
-        if (newVolume > minVolume) {
+        if (newVolume < minVolume) {
+            newVolume = minVolume;
 
         }
         this.newVolume = newVolume;
@@ -71,6 +90,7 @@ public class Radio {
     public int getCurrentVolume() {
         return newVolume;
     }
+
 
     public void addVolume() {
         if (newVolume != maxVolume) {
@@ -90,7 +110,6 @@ public class Radio {
         if (newVolume < maxVolume) {
             newVolume = newVolume + 1;
         }
-        return;
     }
 
 
@@ -98,9 +117,9 @@ public class Radio {
         if (newVolume > minVolume) {
             newVolume = newVolume - 1;
         }
-            return;
-        }
+
     }
+}
 
 
 
