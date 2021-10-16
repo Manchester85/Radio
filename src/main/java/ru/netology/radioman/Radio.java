@@ -4,7 +4,7 @@ package ru.netology.radioman;
 public class Radio {
 
 
-    private int quantityStation = 10;
+    private int quantityStation = 20;
     private int newStation;
     private int newVolume;
     private int minStation = 0;
@@ -17,6 +17,8 @@ public class Radio {
     }
 
     public Radio(int quantityStation) {
+        this.quantityStation = quantityStation;
+        this.maxStation = quantityStation -1;
     }
 
     public void setCurrentStation(int newStation) {

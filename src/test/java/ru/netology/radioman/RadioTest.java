@@ -8,14 +8,23 @@ class RadioTest {
 
     @Test
     void Radio() {
-        Radio radio = new Radio(9);
+        Radio radio = new Radio();
 
     }
 
     @Test
+    void setRadioStation15(){
+        Radio radio = new Radio(20);
+        radio.setCurrentStation(15);
+        int expected = 15;
+        int actual = radio.getCurrentStation();
+        assertEquals(expected, actual);
+    }
+
+    @Test
     void setCurrentStationMax() {
-        Radio radio = new Radio();
-        radio.setCurrentStation(10);
+        Radio radio = new Radio(10);
+        radio.setCurrentStation(11);
         int expected = 9;
         int actual = radio.getCurrentStation();
         assertEquals(expected, actual);
@@ -23,7 +32,7 @@ class RadioTest {
 
     @Test
     void setCurrentStationMin() {
-        Radio radio = new Radio();
+        Radio radio = new Radio(10);
         radio.setCurrentStation(-1);
         int expected = 0;
         int actual = radio.getCurrentStation();
@@ -32,7 +41,7 @@ class RadioTest {
 
     @Test
     void nextStationMax() {
-        Radio radio = new Radio();
+        Radio radio = new Radio(10);
         radio.setCurrentStation(9);
         radio.nextStation();
         int expected = 0;
@@ -43,7 +52,7 @@ class RadioTest {
 
     @Test
     void nextStationMin() {
-        Radio radio = new Radio();
+        Radio radio = new Radio(10);
         radio.setCurrentStation(0);
         radio.nextStation();
         int expected = 1;
@@ -54,7 +63,7 @@ class RadioTest {
 
     @Test
     void prevStationMin() {
-        Radio radio = new Radio();
+        Radio radio = new Radio(10);
         radio.setCurrentStation(0);
         radio.prevStation();
         int expected = 9;
@@ -65,7 +74,7 @@ class RadioTest {
 
     @Test
     void prevStationMax() {
-        Radio radio = new Radio();
+        Radio radio = new Radio(10);
         radio.setCurrentStation(9);
         radio.prevStation();
         int expected = 8;
@@ -76,7 +85,7 @@ class RadioTest {
 
     @Test
     void increaseStationMax() {
-        Radio radio = new Radio();
+        Radio radio = new Radio(10);
         radio.setCurrentStation(9);
         radio.increaseStation();
         int expected = 9;
@@ -87,7 +96,7 @@ class RadioTest {
 
     @Test
     void increaseStationMin() {
-        Radio radio = new Radio();
+        Radio radio = new Radio(10);
         radio.setCurrentStation(0);
         radio.increaseStation();
         int expected = 1;
@@ -98,7 +107,7 @@ class RadioTest {
 
     @Test
     void decreaseStationMax() {
-        Radio radio = new Radio();
+        Radio radio = new Radio(10);
         radio.setCurrentStation(9);
         radio.decreaseStation();
         int expected = 8;
@@ -109,7 +118,7 @@ class RadioTest {
 
     @Test
     void decreaseStationMin() {
-        Radio radio = new Radio();
+        Radio radio = new Radio(10);
         radio.setCurrentStation(-1);
         radio.decreaseStation();
         int expected = 0;
